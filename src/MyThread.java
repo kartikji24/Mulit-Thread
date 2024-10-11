@@ -13,17 +13,21 @@ public class MyThread extends  Thread{
     }
 
     public static void main(String[] args) throws InterruptedException {
-        MyThread t1 = new MyThread();
-        MyThread t2 = new MyThread();
+        Counter counter = new Counter();
+        TestThread t1 = new TestThread(counter);
+        TestThread t2 = new TestThread(counter);
+//        MyThread t1 = new MyThread();
+//        MyThread t2 = new MyThread();
         t1.start(); // Thread Start.
         t2.start();
     //    t1.interrupt();
     //    t1.setDaemon(true);
-        for(int i = 0; i<100; i++){
-            System.out.println("Hello");
-        }
-    //    t2.join(); // wait for, end the work to current Thread.
-        System.out.println("Thread end");
+//        for(int i = 0; i<100; i++){
+//            System.out.println("Hello");
+//        }
+        t1.join();
+        t2.join(); // wait for, end the work to current Thread.
+        System.out.println(counter.getCount());
     }
 
 }

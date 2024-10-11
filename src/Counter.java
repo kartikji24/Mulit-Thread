@@ -2,7 +2,7 @@ public class Counter {
     private int count;
 
 
-     public void increment(){
+     public synchronized void increment(){ // ek baar mai ek hi thread chale.
          count++;
      }
 
